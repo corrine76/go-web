@@ -21,7 +21,7 @@
     <main class="main">
       <aside class="sidebar" id="nav_docs">
         <div class="sidebar-brand">
-          <h1 class="font-weight-400"><a href="../"><span class="font-weight-700">Boomerang</span> UI Kit</a></h1>
+          <h1 class="font-weight-400"><a href="../html"><span class="font-weight-700">Boomerang</span> UI Kit</a></h1>
         </div>
         <div class="scrollbar-inner">
           <ul class="navigation pr-3">
@@ -112,10 +112,10 @@
           <div class="header-nav ml-auto">
             <ul class="nav align-items-center">
               <li class="nav-item d-none d-md-inline-block">
-                <a class="nav-link pl-0 active" href="../">Go to UI Kit</a>
+                <a class="nav-link pl-0 active" href="../html">Go to UI Kit</a>
               </li>
               <li class="nav-item d-none d-md-inline-block">
-                <a class="nav-link" href="../docs/changelog.html">Changelog</a>
+                <a class="nav-link" href="og.html">Changelog</a>
               </li>
               <li class="nav-item ml-4">
                 <a href="https://github.com/webpixels/boomerang-ui-kit/archive/master.zip" class="btn btn-sm btn-primary">Download Free</a>
@@ -128,48 +128,131 @@
             <div class="pt-3 pb-4 mb-4 border-bottom">
               <div class="row">
                 <div class="col-lg-6">
-                  <h2 class="heading h2 font-weight-bold">Customization</h2>
-                  <p>Learn how to create your own style without changing the theme’s core files so you can take advantage of future updates.</p>
+                  <h2 class="heading h2 font-weight-bold">Typography</h2>
+                  <p>Documentation and examples for typography, including global settings, headings, body text, lists, and more.</p>
+                  <a href="http://getbootstrap.com/docs/4.0/content/typography" target="_blank">Open Bootstrap Docs</a>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-9">
-                <h3 id="scss-method">SCSS method</h3>
-                <p>Is highly recommended that all the customized styles to be stored only within the user’s files from the <code>scss</code>folder so you can update this theme everytime with no effort. When you update Boomerang, make sure you backup your files and not to ovveride the user’s custom file, that may contain styles you have created already.</p>
-                <p>In <code>assets/scss</code> directory you will find two files dedicated for custom edit and additions:</p>
-                <ul>
-                  <li><code>_custom-variables.scss</code> will contain each variable you want to edit. Simply copy the variables you need to edit from the main _variables.scss and paste it in this file. It will automatically override the default values with the new ones.</li>
-                  <li><code>_custom.scss</code> will contain styles you want to add or edit.</li>
-                </ul>
-                <h3 id="optional-components">Optional components</h3>
-                <p>You can choose what components to be included in the stylesheet that will be used in the production mode. This will help decreasing the file’s size which will conduct to a faster page loading speed. You can re-include those compoenents any time you want.</p>
-                <p>For choosing the components you have to comment by adding a // at the start of the line or remove the line entirely from <code>theme.scss</code> and <code>_components.scss</code> from the <code>scss</code>. This will remove the Bootstrap components and the theme’s custom ones as well.</p>
-                <h3 id="compile-to-css">Compile to CSS</h3>
-                <p>If you chose the SCSS method, after you make the modifications, you will need to save and compile the changes into a CSS file. It is useful if you want to change primary colors, fonts and so on. Follow the next steps in order to do that:</p>
-                <ul>
-                  <li>Download and install the app from this link - http://scout-app.io/ - or any other app you prefer</li>
-                  <li>Open the <code>_variables.scss</code> file located in <code>assets/scss</code></li>
-                  <li>Copy and paste the variables you want to edit in the <code>_custom-variables.scss</code> file</li>
-                  <li>Replace the variable values with the one you need and save the changes</li>
-                  <li>Open the installed app, import your project, look for theme.scss and compile it</li>
-                  <li>That’s it!</li>
-                </ul>
-                <h3 id="css-method">CSS method</h3>
-                <p>If you need to create/edit some styles we recommend you to use the <code>custom.css</code> from the <code>assets</code> folder. This way you will keep the theme core files untouched and be able to get all the future updates without having to make any modifications.</p>
-                <p>You can rename the custom file whatever you want, but make sure to include that after the theme’s main style.</p>
-                <div class="alert alert-danger">
-                  We do not recommend using this method to override default values or blocks of code. Use this only if you want to add
-                  additional styles that could add or improve some elements. For modifying default values we recommend using the SCSS method.
+                <h3 id="typeface">Typeface</h3>
+                <p>For this theme we used <a href="https://fonts.google.com/specimen/Nunito" target="_blank" class="font-weight-600">Nunito</a> font family from Google Fonts. It is free for commercial use. However, you can choose any font family and include it instead of the default one.</p>
+                <p>To learn more about how to edit fonts, colors and other SCSS variables <a href="zation.html">click here</a></p>
+                <div class="row typeface-palette cols-xs-space cols-sm-space cols-md-space mt-5">
+                  <div class="col-sm-4">
+                    <a>
+                      <div class="typeface-entry">
+                        <span class="badge badge-md typeface-badge badge-pill bg-primary text-white">Regular</span>
+                        <h5 class="heading display-3 font-weight-400 text-dark">
+                          Aa
+                        </h5>
+                        <p>
+                          Mist enveloped the ship three hours out from port.
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-sm-4">
+                    <a>
+                      <div class="typeface-entry">
+                        <span class="badge badge-md typeface-badge badge-pill bg-primary text-white">Semi-bold</span>
+                        <h5 class="heading display-3 font-weight-600 text-dark">
+                          Aa
+                        </h5>
+                        <p>
+                          A shining crescent far beneath the flying.
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-sm-4">
+                    <a data-value="'Quicksand', sans-serif">
+                      <div class="typeface-entry">
+                        <span class="badge badge-md typeface-badge badge-pill bg-primary text-white">Bold</span>
+                        <h5 class="heading display-3 font-weight-700 text-dark">
+                          Aa
+                        </h5>
+                        <p>
+                          A shining crescent far beneath the flying.
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <h3 id="headings">Headings</h3>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Heading</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p><code class="highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
+                      </td>
+                      <td><span class="h1">h1. Bootstrap heading</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code class="highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
+                      </td>
+                      <td><span class="h2">h2. Bootstrap heading</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code class="highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
+                      </td>
+                      <td><span class="h3">h3. Bootstrap heading</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code class="highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
+                      </td>
+                      <td><span class="h4">h4. Bootstrap heading</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code class="highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
+                      </td>
+                      <td><span class="h5">h5. Bootstrap heading</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><code class="highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
+                      </td>
+                      <td><span class="h6">h6. Bootstrap heading</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <pre><code class="language-html" data-lang="html">
+<span class="nt">&lt;h1&gt;</span>h1. Boomerang heading<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>h2. Boomerang heading<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;h3&gt;</span>h3. Boomerang heading<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;h4&gt;</span>h4. Boomerang heading<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;h5&gt;</span>h5. Boomerang heading<span class="nt">&lt;/h5&gt;</span>
+<span class="nt">&lt;h6&gt;</span>h6. Boomerang heading<span class="nt">&lt;/h6&gt;</span>
+</code></pre>
+                </div>
+                <div class="card bg-secondary">
+                  <div class="card-body">
+                    <h6 class="title-decorative">Additional Class Reference</h6>
+                    <dl class="row justfiy-content-between">
+                      <dt class="col-4"><code>.h1 to .h6</code>
+                      </dt>
+                      <dd class="col-8">Apply to heading tags for when you want to match the font styling of a heading but cannot use the associated HTML element</dd>
+                    </dl>
+                  </div>
                 </div>
               </div>
               <div class="col-lg-3 d-none d-lg-inline-block">
                 <div class="sidebar-sticky" data-stick-in-parent="true">
                   <ul class="section-nav">
-                    <li class="toc-entry toc-h3"><a href="#scss-method">SCSS method</a></li>
-                    <li class="toc-entry toc-h3"><a href="#optional-components">Optional components</a></li>
-                    <li class="toc-entry toc-h3"><a href="#compile-to-css">Compile to CSS</a></li>
-                    <li class="toc-entry toc-h3"><a href="#css-method">CSS method</a></li>
+                    <li class="toc-entry toc-h3"><a href="#typeface">Typeface</a></li>
+                    <li class="toc-entry toc-h3"><a href="#headings">Headings</a></li>
                   </ul>
                 </div>
               </div>

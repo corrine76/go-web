@@ -21,7 +21,7 @@
     <main class="main">
       <aside class="sidebar" id="nav_docs">
         <div class="sidebar-brand">
-          <h1 class="font-weight-400"><a href="../"><span class="font-weight-700">Boomerang</span> UI Kit</a></h1>
+          <h1 class="font-weight-400"><a href="../html"><span class="font-weight-700">Boomerang</span> UI Kit</a></h1>
         </div>
         <div class="scrollbar-inner">
           <ul class="navigation pr-3">
@@ -112,10 +112,10 @@
           <div class="header-nav ml-auto">
             <ul class="nav align-items-center">
               <li class="nav-item d-none d-md-inline-block">
-                <a class="nav-link pl-0 active" href="../">Go to UI Kit</a>
+                <a class="nav-link pl-0 active" href="../html">Go to UI Kit</a>
               </li>
               <li class="nav-item d-none d-md-inline-block">
-                <a class="nav-link" href="../docs/changelog.html">Changelog</a>
+                <a class="nav-link" href="og.html">Changelog</a>
               </li>
               <li class="nav-item ml-4">
                 <a href="https://github.com/webpixels/boomerang-ui-kit/archive/master.zip" class="btn btn-sm btn-primary">Download Free</a>
@@ -128,32 +128,48 @@
             <div class="pt-3 pb-4 mb-4 border-bottom">
               <div class="row">
                 <div class="col-lg-6">
-                  <h2 class="heading h2 font-weight-bold">Plugins</h2>
-                  <p>The free version of this theme comes with 5 pre-installed plugins that are ready to use in your project. Below you can find the complete list and description for each one of them.</p>
+                  <h2 class="heading h2 font-weight-bold">Customization</h2>
+                  <p>Learn how to create your own style without changing the theme’s core files so you can take advantage of future updates.</p>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-9">
-                <h3 id="bootstrap-select">Bootstrap Select</h3>
-                <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap’s dropdown.js to style and bring additional functionality to standard select elements.</p>
-                <h3 id="bootstrap-tagsinput">Bootstrap Tagsinput</h3>
-                <p>jQuery plugin providing a Twitter Bootstrap user interface for managing tags</p>
-                <h3 id="fontawesome-5">FontAwesome 5</h3>
-                <p>Get vector icons and social logos on your website with Font Awesome, the web’s most popular icon set and toolkit.</p>
-                <h3 id="input-mask">Input mask</h3>
-                <p>An inputmask helps the user with the input by ensuring a predefined format. This can be usefull for dates, numerics, phone numbers and so on.</p>
-                <h3 id="noui-slider">NoUI Slider</h3>
-                <p>noUiSlider is a range slider without bloat. It offers a ton off features, and it is as small, lightweight and minimal as possible, which is great for mobile use on the many supported devices, including iPhone, iPad, Android devices &amp; Windows (Phone) 8 desktops, tablets and all-in-ones. It works on desktops too, of course!</p>
+                <h3 id="scss-method">SCSS method</h3>
+                <p>Is highly recommended that all the customized styles to be stored only within the user’s files from the <code>scss</code>folder so you can update this theme everytime with no effort. When you update Boomerang, make sure you backup your files and not to ovveride the user’s custom file, that may contain styles you have created already.</p>
+                <p>In <code>assets/scss</code> directory you will find two files dedicated for custom edit and additions:</p>
+                <ul>
+                  <li><code>_custom-variables.scss</code> will contain each variable you want to edit. Simply copy the variables you need to edit from the main _variables.scss and paste it in this file. It will automatically override the default values with the new ones.</li>
+                  <li><code>_custom.scss</code> will contain styles you want to add or edit.</li>
+                </ul>
+                <h3 id="optional-components">Optional components</h3>
+                <p>You can choose what components to be included in the stylesheet that will be used in the production mode. This will help decreasing the file’s size which will conduct to a faster page loading speed. You can re-include those compoenents any time you want.</p>
+                <p>For choosing the components you have to comment by adding a // at the start of the line or remove the line entirely from <code>theme.scss</code> and <code>_components.scss</code> from the <code>scss</code>. This will remove the Bootstrap components and the theme’s custom ones as well.</p>
+                <h3 id="compile-to-css">Compile to CSS</h3>
+                <p>If you chose the SCSS method, after you make the modifications, you will need to save and compile the changes into a CSS file. It is useful if you want to change primary colors, fonts and so on. Follow the next steps in order to do that:</p>
+                <ul>
+                  <li>Download and install the app from this link - http://scout-app.io/ - or any other app you prefer</li>
+                  <li>Open the <code>_variables.scss</code> file located in <code>assets/scss</code></li>
+                  <li>Copy and paste the variables you want to edit in the <code>_custom-variables.scss</code> file</li>
+                  <li>Replace the variable values with the one you need and save the changes</li>
+                  <li>Open the installed app, import your project, look for theme.scss and compile it</li>
+                  <li>That’s it!</li>
+                </ul>
+                <h3 id="css-method">CSS method</h3>
+                <p>If you need to create/edit some styles we recommend you to use the <code>custom.css</code> from the <code>assets</code> folder. This way you will keep the theme core files untouched and be able to get all the future updates without having to make any modifications.</p>
+                <p>You can rename the custom file whatever you want, but make sure to include that after the theme’s main style.</p>
+                <div class="alert alert-danger">
+                  We do not recommend using this method to override default values or blocks of code. Use this only if you want to add
+                  additional styles that could add or improve some elements. For modifying default values we recommend using the SCSS method.
+                </div>
               </div>
               <div class="col-lg-3 d-none d-lg-inline-block">
                 <div class="sidebar-sticky" data-stick-in-parent="true">
                   <ul class="section-nav">
-                    <li class="toc-entry toc-h3"><a href="#bootstrap-select">Bootstrap Select</a></li>
-                    <li class="toc-entry toc-h3"><a href="#bootstrap-tagsinput">Bootstrap Tagsinput</a></li>
-                    <li class="toc-entry toc-h3"><a href="#fontawesome-5">FontAwesome 5</a></li>
-                    <li class="toc-entry toc-h3"><a href="#input-mask">Input mask</a></li>
-                    <li class="toc-entry toc-h3"><a href="#noui-slider">NoUI Slider</a></li>
+                    <li class="toc-entry toc-h3"><a href="#scss-method">SCSS method</a></li>
+                    <li class="toc-entry toc-h3"><a href="#optional-components">Optional components</a></li>
+                    <li class="toc-entry toc-h3"><a href="#compile-to-css">Compile to CSS</a></li>
+                    <li class="toc-entry toc-h3"><a href="#css-method">CSS method</a></li>
                   </ul>
                 </div>
               </div>

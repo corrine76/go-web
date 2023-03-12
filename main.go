@@ -67,7 +67,7 @@ func blogHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Parse the blog homepage template
-	tmpl, err := template.ParseFiles("html/blog.html")
+	tmpl, err := template.ParseFiles("blog.html")
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
 		return

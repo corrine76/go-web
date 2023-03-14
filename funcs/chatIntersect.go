@@ -1,23 +1,18 @@
 package funcs
 
 import (
-	"bytes"
+	"context"
 	"encoding/json"
-	"fmt"
+	openai "github.com/sashabaranov/go-openai"
 	"html/template"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 )
 
 type ChatGPTRequest struct {
-	Prompt string `json:"prompt"`
-	Length int    `json:"length"`
-}
-
-type ChatGPTResponse struct {
-	Completion string `json:"completion"`
+	Messages []openai.ChatCompletionMessage `json:"messages"`
+	Ask      string                         `json:"ask"`
 }
 
 type Config struct {
@@ -28,9 +23,8 @@ type Config struct {
 type Page struct {
 	Title    string
 	APIKey   string
-	Prompt   string
-	Length   int
-	Response string
+	Messages []openai.ChatCompletionMessage
+	Reply    string
 }
 
 func loadConfig(filename string) (Config, error) {
@@ -49,49 +43,40 @@ func loadConfig(filename string) (Config, error) {
 	return config, nil
 }
 
-func generateText(prompt string, length int, apiKey, proxy string) (string, error) {
-	requestBody, err := json.Marshal(ChatGPTRequest{prompt, length})
-	if err != nil {
-		return "", err
-	}
-	fmt.Println("发送请求", requestBody)
-
-	apiEndpoint := "https://api.openai.com/v1/chat/completions"
-	request, err := http.NewRequest(http.MethodPost, apiEndpoint, bytes.NewBuffer(requestBody))
-	if err != nil {
-		return "", err
-	}
-	request.Header.Set("Authorization", "Bearer "+apiKey)
-	request.Header.Set("Content-Type", "application/json")
-
+func sendText(req *openai.ChatCompletionRequest, apiKey, proxy string) (string, error) {
+	config := openai.DefaultConfig(apiKey)
 	proxyUrl, err := url.Parse(proxy)
 	if err != nil {
-		return "", err
+		panic(err)
 	}
-	client := &http.Client{
-		Transport: &http.Transport{
-			Proxy: http.ProxyURL(proxyUrl),
-		},
+	transport := &http.Transport{
+		Proxy: http.ProxyURL(proxyUrl),
 	}
-	response, err := client.Do(request)
+	config.HTTPClient = &http.Client{
+		Transport: transport,
+	}
+
+	ctx := context.TODO()
+	client := openai.NewClientWithConfig(config)
+	resp, err := client.CreateChatCompletion(ctx, *req)
 	if err != nil {
 		return "", err
 	}
-	defer response.Body.Close()
+	req.Messages = append(req.Messages, resp.Choices[0].Message)
+	return resp.Choices[0].Message.Content, nil
 
-	responseBody, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		return "", err
-	}
-
-	var chatGPTResponse ChatGPTResponse
-	err = json.Unmarshal(responseBody, &chatGPTResponse)
-	if err != nil {
-		return "", err
-	}
-
-	fmt.Println("chatGPTResponse", chatGPTResponse)
-	return chatGPTResponse.Completion, nil
+	// resp, err := client.CreateChatCompletion(
+	// 	context.TODO(),
+	// 	openai.ChatCompletionRequest{
+	// 		Model: openai.GPT3Dot5Turbo,
+	// 		Messages: []openai.ChatCompletionMessage{
+	// 			{
+	// 				Role:    openai.ChatMessageRoleUser,
+	// 				Content: content,
+	// 			},
+	// 		},
+	// 	},
+	// )
 }
 
 func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
@@ -108,20 +93,17 @@ func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		prompt := r.FormValue("prompt")
-		length := 50
+		req := r.FormValue("req")
+
 		response, err := generateText(prompt, length, config.APIKey, config.Proxy)
 		if err != nil {
 			http.Error(w, "Failed to generate text: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
-		fmt.Println("接收响应", response)
 
 		page := Page{
 			Title:    "ChatGPT API Demo",
 			APIKey:   config.APIKey,
-			Prompt:   prompt,
-			Length:   length,
 			Response: response,
 		}
 
@@ -141,8 +123,7 @@ func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	page := Page{
-		Title:  "ChatGPT API Demo",
-		APIKey: config.APIKey,
+		Title: "ChatGPT API Demo",
 	}
 
 	tmpl, err := template.ParseFiles("chat-intersect.html")

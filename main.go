@@ -7,5 +7,6 @@ import (
 
 func main() {
 	http.HandleFunc("/", funcs.IndexHandler)
+	http.HandleFunc("/chat-login", funcs.IndexHandler)
 	http.ListenAndServe(":8080", nil)
 }

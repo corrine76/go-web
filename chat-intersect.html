@@ -12,13 +12,13 @@
     <hr>
     <div class="form-group">
         <label for="response">Response:</label>
-        <textarea class="form-control" rows="10" name="response" id="response" readonly>{{ .Response }}</textarea>
+        <textarea class="form-control" rows="10" name="response" id="response" readonly>{{ .Reply }}</textarea>
     </div>
     <hr>
     <form method="POST">
         <div class="form-group">
-            <label for="prompt">Prompt:</label>
-            <input type="text" class="form-control" name="prompt" id="prompt" value="{{ .Req }}" required>
+            <label for="prompt">Ask:</label>
+            <input type="text" class="form-control" name="prompt" id="prompt" value="{{ .Ask }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

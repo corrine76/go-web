@@ -10,21 +10,15 @@ import (
 	"os"
 )
 
-type ChatGPTRequest struct {
-	Messages []openai.ChatCompletionMessage `json:"messages"`
-	Ask      string                         `json:"ask"`
-}
-
 type Config struct {
 	APIKey string `json:"api_key"`
 	Proxy  string `json:"proxy"`
 }
 
 type Page struct {
-	Title    string
-	APIKey   string
-	Messages []openai.ChatCompletionMessage
-	Reply    string
+	Title string
+	Ask   string
+	Reply string
 }
 
 func loadConfig(filename string) (Config, error) {
@@ -43,7 +37,7 @@ func loadConfig(filename string) (Config, error) {
 	return config, nil
 }
 
-func sendText(req *openai.ChatCompletionRequest, apiKey, proxy string) (string, error) {
+func sendText(req openai.ChatCompletionRequest, apiKey, proxy string) (string, error) {
 	config := openai.DefaultConfig(apiKey)
 	proxyUrl, err := url.Parse(proxy)
 	if err != nil {
@@ -58,25 +52,12 @@ func sendText(req *openai.ChatCompletionRequest, apiKey, proxy string) (string, 
 
 	ctx := context.TODO()
 	client := openai.NewClientWithConfig(config)
-	resp, err := client.CreateChatCompletion(ctx, *req)
+	resp, err := client.CreateChatCompletion(ctx, req)
 	if err != nil {
 		return "", err
 	}
-	req.Messages = append(req.Messages, resp.Choices[0].Message)
+	// req.Messages = append(req.Messages, resp.Choices[0].Message)
 	return resp.Choices[0].Message.Content, nil
-
-	// resp, err := client.CreateChatCompletion(
-	// 	context.TODO(),
-	// 	openai.ChatCompletionRequest{
-	// 		Model: openai.GPT3Dot5Turbo,
-	// 		Messages: []openai.ChatCompletionMessage{
-	// 			{
-	// 				Role:    openai.ChatMessageRoleUser,
-	// 				Content: content,
-	// 			},
-	// 		},
-	// 	},
-	// )
 }
 
 func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
@@ -93,18 +74,25 @@ func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		req := r.FormValue("req")
-
-		response, err := generateText(prompt, length, config.APIKey, config.Proxy)
+		ask := r.FormValue("ask")
+		req := openai.ChatCompletionRequest{
+			Model: openai.GPT3Dot5Turbo,
+			Messages: []openai.ChatCompletionMessage{
+				{
+					Role:    openai.ChatMessageRoleUser,
+					Content: ask,
+				},
+			},
+		}
+		response, err := sendText(req, config.APIKey, config.Proxy)
 		if err != nil {
 			http.Error(w, "Failed to generate text: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
 
 		page := Page{
-			Title:    "ChatGPT API Demo",
-			APIKey:   config.APIKey,
-			Response: response,
+			Title: "ChatGPT API Demo",
+			Reply: response,
 		}
 
 		tmpl, err := template.ParseFiles("chat-intersect.html")
@@ -124,6 +112,7 @@ func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
 
 	page := Page{
 		Title: "ChatGPT API Demo",
+		Ask:   "随便问问～",
 	}
 
 	tmpl, err := template.ParseFiles("chat-intersect.html")

@@ -39,15 +39,19 @@ func loadConfig(filename string) (Config, error) {
 
 func sendText(req openai.ChatCompletionRequest, apiKey, proxy string) (string, error) {
 	config := openai.DefaultConfig(apiKey)
-	proxyUrl, err := url.Parse(proxy)
-	if err != nil {
-		panic(err)
-	}
-	transport := &http.Transport{
-		Proxy: http.ProxyURL(proxyUrl),
-	}
-	config.HTTPClient = &http.Client{
-		Transport: transport,
+	if proxy != "" {
+		proxyUrl, err := url.Parse(proxy)
+		if err != nil {
+			panic(err)
+		}
+		transport := &http.Transport{
+			Proxy: http.ProxyURL(proxyUrl),
+		}
+		config.HTTPClient = &http.Client{
+			Transport: transport,
+		}
+	} else {
+		config.HTTPClient = &http.Client{}
 	}
 
 	ctx := context.TODO()

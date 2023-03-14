@@ -56,7 +56,7 @@ func generateText(prompt string, length int, apiKey, proxy string) (string, erro
 	}
 	fmt.Println("发送请求", requestBody)
 
-	apiEndpoint := "https://api.openai.com/v1/engines/davinci-codex/completions"
+	apiEndpoint := "https://api.openai.com/v1/chat/completions"
 	request, err := http.NewRequest(http.MethodPost, apiEndpoint, bytes.NewBuffer(requestBody))
 	if err != nil {
 		return "", err

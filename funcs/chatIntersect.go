@@ -99,7 +99,7 @@ func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
 			Reply: response,
 		}
 
-		tmpl, err := template.ParseFiles("chat-intersect.html")
+		tmpl, err := template.ParseFiles("./static/chat-intersect.html")
 		if err != nil {
 			http.Error(w, "Failed to parse template: "+err.Error(), http.StatusInternalServerError)
 			return
@@ -119,7 +119,7 @@ func ChatDemoHandler(w http.ResponseWriter, r *http.Request) {
 		Ask:   "随便问问～",
 	}
 
-	tmpl, err := template.ParseFiles("chat-intersect.html")
+	tmpl, err := template.ParseFiles("./static/chat-intersect.html")
 	if err != nil {
 		http.Error(w, "Failed to parse template: "+err.Error(), http.StatusInternalServerError)
 		return

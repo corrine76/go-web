@@ -6,9 +6,16 @@ import (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static-chat/", http.StripPrefix("/static-chat/", fs))
+	// 定义文件服务器
+	fs := http.FileServer(http.Dir("assets"))
+	http.Handle("/static-assets/", http.StripPrefix("/static-assets/", fs))
 
-	http.HandleFunc("/", funcs.ChatDemoHandler)
-	http.ListenAndServe(":8080", nil)
+	// 定义请求接口
+	http.HandleFunc("/", funcs.IndexHandler)
+
+	// 监听端口号
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		panic(err)
+	}
 }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Blog</title>
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f2f2f2;
+	}
+	header {
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+	}
+	nav li {
+		margin-right: 20px;
+	}
+	nav a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 18px;
+	}
+	nav a:hover {
+		text-decoration: underline;
+	}
+	.column {
+		flex: 1;
+		padding: 20px;
+		box-sizing: border-box;
+	}
+	.column h3 {
+		margin-top: 0;
+	}
+	.card {
+		background-color: #fff;
+		padding: 20px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		margin-bottom: 20px;
+	}
+	.card h2 {
+		margin-top: 0;
+	}
+	.card p {
+		margin-bottom: 0;
+	}
+	footer {
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+		<img src="logo.png" alt="My Blog Logo">
+	</header>
+	<main>
+		<!-- Page content goes here -->
+        <div class="column">
+        	<div class="card">
+        		<a href="#">
+        			<h2>Article Title</h2>
+        			<h3>Subtitle</h3>
+        			<p>Reads: 100</p>
+        		</a>
+        	</div>
+        	<div class="card">
+        		<a href="#">
+        			<h2>Article Title</h2>
+        			<h3>Subtitle</h3>
+        			<p>Reads: 200</p>
+        		</a>
+        	</div>
+        	<div class="card">
+        		<a href="#">
+        			<h2>Article Title</h2>
+        			<h3>Subtitle</h3>
+        			<p>Reads: 300</p>
+        		</a>
+        	</div>
+        </div>
+	</main>
+	<footer>
+		<div class="column">
+			<h3>Column 1</h3>
+			<p>Content for column 1 goes here.</p>
+		</div>
+		<div class="column">
+			<h3>Column 2</h3>
+			<p>Content for column 2 goes here.</p>
+		</div>
+		<div class="column">
+			<h3>Column 3</h3>
+			<p>Content for column 3 goes here.</p>
+		</div>
+	</footer>
+</body>
+</html>

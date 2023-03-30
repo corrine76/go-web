@@ -10,8 +10,13 @@ func main() {
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/static-assets/", http.StripPrefix("/static-assets/", fs))
 
-	// 定义请求接口
+	// 请求首页
 	http.HandleFunc("/", funcs.IndexHandler)
+	// 请求详情
+	// 请求代理跳转
+	// 免责申明
+	// 用户反馈
+	// 隐私政策
 
 	// 监听端口号
 	err := http.ListenAndServe(":8080", nil)

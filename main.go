@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	// 定义文件服务器
-	fs := http.FileServer(http.Dir("assets"))
-	http.Handle("/static-assets/", http.StripPrefix("/static-assets/", fs))
+	// // 定义文件服务器
+	// fs := http.FileServer(http.Dir("assets"))
+	// http.Handle("/static-assets/", http.StripPrefix("/static-assets/", fs))
 
 	// 请求首页
 	http.HandleFunc("/", funcs.IndexHandler)

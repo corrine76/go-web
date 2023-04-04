@@ -9,7 +9,7 @@
 	<head>
 		<title>My Blog</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+		<meta charset="UTF-8">
 		<style>
 			/* Add CSS to hide scrollbar */
 			${INSERT_HERE}
@@ -66,11 +66,52 @@
 				box-sizing: border-box;
 			}
 			
+			.card-link {
+				text-decoration: none;
+			}
+			
 			.card {
-				background-color: #ffffff;
+				background-color: #f5f5f5;
+				border-radius: 8px;
 				padding: 20px;
 				margin-bottom: 20px;
-				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.2s;
+			}
+			
+			.card:hover {
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+			}
+			
+			.card-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+			}
+			
+			.card-title {
+				font-size: 24px;
+				color: #0077cc;
+				margin: 0;
+			}
+			
+			.card-tag {
+				background-color: #0077cc;
+				color: #fff;
+				font-size: 14px;
+				padding: 4px 8px;
+				border-radius: 4px;
+			}
+			
+			.card-subtitle {
+				font-size: 16px;
+				color: #333;
+				margin: 0 0 10px;
+			}
+			
+			.card-body {
+				font-size: 14px;
+				color: #666;
 			}
 			
 			footer {
@@ -103,48 +144,18 @@
 <main>
 	<!-- Page content goes here -->
 	<div class="column">
-		<div class="card">
-			<a href="#">
-				<h2>Article Title</h2>
-				<h3>Subtitle</h3>
-				<p>Reads: 100</p>
-			</a>
-		</div>
-		<div class="card">
-			<a href="#">
-				<h2>Article Title</h2>
-				<h3>Subtitle</h3>
-				<p>Reads: 200</p>
-			</a>
-		</div>
-		<div class="card">
-			<a href="#">
-				<h2>Article Title</h2>
-				<h3>Subtitle</h3>
-				<p>Reads: 300</p>
-			</a>
-		</div>
-		<div class="card">
-			<a href="#">
-				<h2>Article Title</h2>
-				<h3>Subtitle</h3>
-				<p>Reads: 100</p>
-			</a>
-		</div>
-		<div class="card">
-			<a href="#">
-				<h2>Article Title</h2>
-				<h3>Subtitle</h3>
-				<p>Reads: 200</p>
-			</a>
-		</div>
-		<div class="card">
-			<a href="#">
-				<h2>Article Title</h2>
-				<h3>Subtitle</h3>
-				<p>Reads: 300</p>
-			</a>
-		</div>
+		<a href="#" class="card-link">
+			<div class="card">
+				<div class="card-header">
+					<h2 class="card-title">这是标题</h2>
+					<span class="card-tag">标签</span>
+				</div>
+				<p class="card-subtitle">这是副标题</p>
+				<div class="card-body">
+					<p>这是缩略信息，文章的第一段或第一句话可以放在这里。</p>
+				</div>
+			</div>
+		</a>
 	</div>
 </main>
 <footer>

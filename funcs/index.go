@@ -1,8 +1,8 @@
 package funcs
 
 import (
-	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -16,6 +16,7 @@ type BlogPage struct {
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	// 页面数据
 	pageData := BlogPage{
 		Home:    "My Blog",
 		About:   "about",
@@ -23,17 +24,15 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		Contact: "contact",
 	}
 
-	// Parse the blog homepage template
 	tmpl, err := template.ParseFiles("index2.html")
 	if err != nil {
-		fmt.Println("Error parsing template:", err)
+		log.Println("Error parsing template", err)
 		return
 	}
 
-	// Execute the blog homepage template with the BlogPage data
 	err = tmpl.Execute(w, pageData)
 	if err != nil {
-		fmt.Println("Error executing template:", err)
+		log.Println("Error executing template", err)
 		return
 	}
 }

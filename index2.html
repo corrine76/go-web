@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>My Blog</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="static/css/index2-style.css">
 </head>
+
 <body>
-<header>
-	<nav>
-		<div style="font-size: 24px; font-weight: bold;">My Blog</div>
-		<ul>
-			<li><a href="#">{{.Home}}</a></li>
-			<li><a href="#">{{.About}}</a></li>
-			<li><a href="#">{{.Blog}}</a></li>
-			<li><a href="#">{{.Contact}}</a></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<!-- Page content goes here -->
-	<div class="column">
-		<a href="#" class="card-link">
-			<div class="card">
-				<div class="card-header">
-					<h2 class="card-title">这是标题</h2>
-					<span class="card-tag">标签</span>
+	<header>
+		<nav>
+			<div style="font-size: 24px; font-weight: bold;">My Blog</div>
+			<ul>
+				<li><a href="#">{{.Home}}</a></li>
+				<li><a href="#">{{.About}}</a></li>
+				<li><a href="#">{{.Blog}}</a></li>
+				<li><a href="#">{{.Contact}}</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<!-- Page content goes here -->
+		<div class="column">
+			<a href="#" class="card-link">
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">这是标题</h2>
+						<span class="card-tag">标签</span>
+					</div>
+					<p class="card-subtitle">这是副标题</p>
+					<div class="card-body">
+						<p>这是缩略信息，文章的第一段或第一句话可以放在这里。</p>
+					</div>
 				</div>
-				<p class="card-subtitle">这是副标题</p>
-				<div class="card-body">
-					<p>这是缩略信息，文章的第一段或第一句话可以放在这里。</p>
-				</div>
-			</div>
-		</a>
-	</div>
-</main>
-<footer>
-	<div class="column">
-		<h3>Column 1</h3>
-		<p>Content for column 1 goes here.</p>
-	</div>
-	<div class="column">
-		<h3>Column 2</h3>
-		<p>Content for column 2 goes here.</p>
-	</div>
-	<div class="column">
-		<h3>Column 3</h3>
-		<p>Content for column 3 goes here.</p>
-	</div>
-</footer>
+			</a>
+		</div>
+	</main>
+	<footer>
+		<div class="column">
+			<h3>Column 1</h3>
+			<p>Content for column 1 goes here.</p>
+		</div>
+		<div class="column">
+			<h3>Column 2</h3>
+			<p>Content for column 2 goes here.</p>
+		</div>
+		<div class="column">
+			<h3>Column 3</h3>
+			<p>Content for column 3 goes here.</p>
+		</div>
+	</footer>
 </body>
+
 </html>

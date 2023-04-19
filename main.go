@@ -12,7 +12,7 @@ func main() {
 
 	// 请求首页
 	http.HandleFunc("/", funcs.IndexHandler)
-	// 请求详情
+	// 请求详情页
 	// 请求代理跳转
 	// 免责申明
 	// 用户反馈
